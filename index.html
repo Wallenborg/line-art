@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore 'A Line is Never Alone,' a web page randomly generating 500 lines. The page reloads every 60 seconds."
+    />
+    <title>A Line is Never Alone</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        height: 100vh;
+      }
+
+      .random-div {
+        box-sizing: border-box;
+        width: 100%;
+        height: 1px; /* Initial value for height */
+        background-color: #000; /* Initial value for background color */
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function createRandomDivs() {
+        // Reference to the body element
+        var body = document.body;
+
+        // Number of div elements you want to create
+        var numberOfDivs = 500;
+
+        // Clear the existing content in the body
+        body.innerHTML = "";
+
+        // Create 500 div elements and append them to the body
+        for (var i = 0; i < numberOfDivs; i++) {
+          var div = document.createElement("div");
+          div.classList.add("random-div");
+
+          // Generate a random height between 1px and 15px
+          var randomHeight = Math.floor(Math.random() * 15) + 1;
+          div.style.height = randomHeight + "px";
+
+          // Generate a random background color
+          var randomColor =
+            "#" + Math.floor(Math.random() * 16777215).toString(16);
+          div.style.backgroundColor = randomColor;
+
+          // Append the div to the body
+          body.appendChild(div);
+        }
+      }
+
+      // Call the function initially
+      createRandomDivs();
+
+      // Reload the page every 60 seconds
+      setInterval(createRandomDivs, 60000);
+    </script>
+  </body>
+</html>
